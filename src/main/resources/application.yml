@@ -11,4 +11,4 @@ spring:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate: 
-        dialect: org.hibernate.dialect.PostgreSQLDialec
+        dialect: org.hibernate.dialect.PostgreSQLDialect
