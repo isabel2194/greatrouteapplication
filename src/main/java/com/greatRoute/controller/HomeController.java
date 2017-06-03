@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.greatRoute.entity.User;
+import com.greatRoute.entity.Usuario;
 import com.greatRoute.model.RutaModel;
 import com.greatRoute.model.UserModel;
 import com.greatRoute.services.RutaService;
@@ -102,7 +102,7 @@ public class HomeController {
 	}
 
 	@GetMapping({ "/loginsuccess" })
-	public String loguear(@ModelAttribute("user") User user) {
+	public String loguear(@ModelAttribute("user") Usuario user) {
 		return "redirect:/index";
 	}
 

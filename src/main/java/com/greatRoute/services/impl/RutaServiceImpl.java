@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 import com.greatRoute.converter.RutaConverter;
 import com.greatRoute.converter.UserConverter;
 import com.greatRoute.entity.Ruta;
-import com.greatRoute.entity.User;
+import com.greatRoute.entity.Usuario;
 import com.greatRoute.model.RutaModel;
 import com.greatRoute.model.UserModel;
 import com.greatRoute.repository.RutaRepository;
@@ -46,7 +46,7 @@ public class RutaServiceImpl implements RutaService {
 	@Override
 	public List<RutaModel> allRoutes(UserModel user) {
 		List<RutaModel> rutas = new ArrayList<RutaModel>();
-		User userEntity = converterUser.modelToEntity(user);
+		Usuario userEntity = converterUser.modelToEntity(user);
 		List<Ruta> entitiesRuta = rutaRepository.findByUsername(userEntity);
 		if (entitiesRuta != null) {
 			for (Ruta ruta : entitiesRuta)
@@ -92,7 +92,7 @@ public class RutaServiceImpl implements RutaService {
 		if (user != null) {
 			String ruta = createFile(jsonResponse, user.getUsername());
 
-			User userEntity = converterUser.modelToEntity(user);
+			Usuario userEntity = converterUser.modelToEntity(user);
 
 			return guardarRuta(new Ruta(ruta, distancia, userEntity, origen, destino, tiempo));
 		} else
@@ -128,8 +128,8 @@ public class RutaServiceImpl implements RutaService {
 
 	@Override
 	public RutaModel obtenerRuta(int rutaId, UserModel user) {
-		User userEntity = converterUser.modelToEntity(user);
-		Ruta ruta = rutaRepository.findByIdAndUser(rutaId, userEntity);
+		Usuario userEntity = converterUser.modelToEntity(user);
+		Ruta ruta = rutaRepository.findByIdAndUsuario(rutaId, userEntity);
 		if (ruta != null)
 			return converter.entityToModel(ruta);
 		return null;
@@ -185,7 +185,7 @@ public class RutaServiceImpl implements RutaService {
 			ruta.setDestino(destino);
 			ruta.setOrigen(origen);
 			ruta.setTiempoEstimado(tiempo);
-			String rutaFile = createFile(jsonResponse, ruta.getUser().getUsername());
+			String rutaFile = createFile(jsonResponse, ruta.getUsuario().getUsername());
 			deleteFile(ruta.getRecorrido());
 			ruta.setRecorrido(rutaFile);
 			rutaRepository.save(ruta);

@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "Usuario")
+public class Usuario {
 
 	@Id
 	@Column(name = "username", unique = true, nullable = false, length = 45)
@@ -29,17 +29,17 @@ public class User {
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
 
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "usuario")
 	@Column(name = "rutas")
 	private List<Ruta> rutas;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario")
 	private Set<UserRole> userRole = new HashSet<UserRole>();
 
-	public User() {
+	public Usuario() {
 	}
 
-	public User(String username, String email, String password, boolean enabled) {
+	public Usuario(String username, String email, String password, boolean enabled) {
 		super();
 		this.username = username;
 		this.email = email;
@@ -48,7 +48,7 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public User(String username, String email, String password, boolean enabled, Set<UserRole> userRole) {
+	public Usuario(String username, String email, String password, boolean enabled, Set<UserRole> userRole) {
 		super();
 		this.username = username;
 		this.email = email;

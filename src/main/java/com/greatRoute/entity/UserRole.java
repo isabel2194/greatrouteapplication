@@ -21,14 +21,14 @@ public class UserRole {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "username", nullable = false)
-	private User user;
+	private Usuario usuario;
 	
 	@Column(name = "role", nullable = false, length = 45)
 	private String role;
 
-	public UserRole(User user, String role) {
+	public UserRole(Usuario user, String role) {
 		super();
-		this.user = user;
+		this.usuario = user;
 		this.role = role;
 	}
 
@@ -43,12 +43,12 @@ public class UserRole {
 		this.userRoleId = userRoleId;
 	}
 
-	public User getUser() {
-		return user;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getRole() {

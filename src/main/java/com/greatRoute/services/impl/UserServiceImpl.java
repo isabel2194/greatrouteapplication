@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.greatRoute.converter.UserConverter;
-import com.greatRoute.entity.User;
+import com.greatRoute.entity.Usuario;
 import com.greatRoute.entity.UserRole;
 import com.greatRoute.model.UserModel;
 import com.greatRoute.repository.UserRepository;
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public boolean comprobarCredenciales(UserModel actualUser) {
-		User user=converter.modelToEntity(actualUser);
+		Usuario user=converter.modelToEntity(actualUser);
 		if(userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword())!=null)
 			return true;
 		return false;
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	
 	@Override
 	public UserModel findByUsername(String username){
-		User user=userRepository.findByUsername(username);
+		Usuario user=userRepository.findByUsername(username);
 		if(user!=null)
 			return converter.entityToModel(user);
 		return null;
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public boolean registrarUsuario(UserModel userModel) {
-		User user= converter.modelToEntity(userModel);
+		Usuario user= converter.modelToEntity(userModel);
 		user.setEnabled(true);
 		Set<UserRole> roles=new HashSet<UserRole>();
 		roles.add(new UserRole(user,"USUARIO"));
@@ -76,11 +76,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByUsername(username);
+		Usuario user = userRepository.findByUsername(username);
 		return buildUser(user,buildAuthorities(user.getUserRole()));
 	}
 	
-	private org.springframework.security.core.userdetails.User buildUser(User user, List<GrantedAuthority> authorities){
+	private org.springframework.security.core.userdetails.User buildUser(Usuario user, List<GrantedAuthority> authorities){
 		return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),user.isEnabled(),true,true,true,authorities);
 	}
 	

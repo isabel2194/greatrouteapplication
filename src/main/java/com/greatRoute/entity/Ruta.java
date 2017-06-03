@@ -28,7 +28,7 @@ public class Ruta{
 	
 	@ManyToOne
 	@JoinColumn(name="username",nullable=false)
-	private User user;
+	private Usuario usuario;
 	
 	@Column(name="origen",nullable=false)
 	private String origen;
@@ -41,23 +41,23 @@ public class Ruta{
 	
 	public Ruta(){}
 
-	public Ruta(int id, String recorrido, double distancia, User user, String origen, String destino,
+	public Ruta(int id, String recorrido, double distancia, Usuario usuario, String origen, String destino,
 			int tiempoEstimado) {
 		super();
 		this.id = id;
 		this.recorrido = recorrido;
 		this.distancia = distancia;
-		this.user = user;
+		this.usuario = usuario;
 		this.origen = origen;
 		this.destino = destino;
 		this.tiempoEstimado = tiempoEstimado;
 	}
 
-	public Ruta(String recorrido, double distancia, User user, String origen, String destino, int tiempoEstimado) {
+	public Ruta(String recorrido, double distancia, Usuario usuario, String origen, String destino, int tiempoEstimado) {
 		super();
 		this.recorrido = recorrido;
 		this.distancia = distancia;
-		this.user = user;
+		this.usuario = usuario;
 		this.origen = origen;
 		this.destino = destino;
 		this.tiempoEstimado = tiempoEstimado;
@@ -87,12 +87,12 @@ public class Ruta{
 		this.distancia = distancia;
 	}
 
-	public User getUser() {
-		return user;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getOrigen() {
