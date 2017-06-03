@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/greatroutebd
-    username: root
-    password: USER258
+    url: jdbc:postgres://ec2-184-73-236-170.compute-1.amazonaws.com:5432/dabg4iqngia79h
+    username: ugxvdfwvbocgai
+    password: 02efd1f552879e6909a324bdf2956a8e34b59506aa37b1972a58e0929c7127ff
   jpa:
     show-sql: true
     hibernate:
@@ -11,4 +11,4 @@ spring:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
       hibernate: 
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.PostgreSQLDialec
