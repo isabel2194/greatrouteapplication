@@ -14,7 +14,7 @@ import com.greatRoute.entity.Usuario;
 @Repository("rutaRepository")
 public interface RutaRepository extends JpaRepository<Ruta, Serializable>{
 
-	@Query("SELECT rutas FROM Ruta rutas WHERE rutas.user=(:username)")
+	@Query("SELECT rutas FROM Ruta rutas WHERE rutas.usuario=(:username)")
 	public List<Ruta> findByUsername(@Param("username")Usuario username);
 	
 	public Ruta findById(int id);
