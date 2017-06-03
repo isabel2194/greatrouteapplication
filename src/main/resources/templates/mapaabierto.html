@@ -7,39 +7,30 @@
 <body>
 
 	<div class="container-fluid" th:fragment="content">
-		<input style="display: none;" id="jsonMapa" th:value="${rutaResponse}" />
-		<div
+		<div id="information_mapa"
 			class="col-xs-12 col-sm-3 col-md-3 col-lg-3 panel panel-default pull-left">
-			<div id="informacion" class="panel-body">
-				<div id="distancia" class="col-xs-12">
-					<span>Distancia total:</span><span id="distancia_value"
-						th:value="${distancia}">0 km</span>
-				</div>
-				<div id="altura" class="col-xs-12">
-					<span>Altura total:</span> <span id="altura_value"></span>
-				</div>
-				<div id="desnivel_pos" class="col-xs-12">
-					<span>Desnivel positivo:</span> <span id="desnivel_pos_value"></span>
-				</div>
-				<div id="desnivel_neg" class="col-xs-12">
-					<span>Desnivel negativo:</span> <span id="desnivel_neg_value"></span>
-				</div>
-			</div>
-			<div id="add_points" class="panel-body">
-				<h2>Puntos intermedios</h2>
-					<input id="waypoint-input" class="col-xs-12" type="text"
-						placeholder="Introduce un punto intermedio" /> <button
-						id="addPunto" class="col-xs-12" disabled="disabled">Añadir punto</button>
-				<ul id="listaPuntos" class="list-group">
-				</ul>
-			</div>
-		</div>
-		<div
-			class="col-xs-12 col-sm-9 col-md-9 col-lg-9 panel panel-default pull-right">
-			<input id="origin-input" class="controls" type="text"
-				placeholder="Desde" name="origin-input" th:value="${origen}" /> <input
-				id="destination-input" class="controls" type="text"
+			<input style="display: none;" id="jsonMapa"
+				th:value="${rutaResponse}" />
+			<h3>Inicio</h3>
+			<input id="origin-input" class="controls col-xs-12" type="text"
+				placeholder="Desde" name="origin-input" th:value="${origen}" />
+			<h3>Fin</h3>
+			<input id="destination-input" class="controls col-xs-12" type="text"
 				placeholder="Hasta" name="destination-input" th:value="${destino}" />
+			<div id="distancia" class="col-xs-12">
+				<span>Distancia total:</span><span id="distancia_value"
+					th:value="${distancia}">0 km</span>
+			</div>
+			<h3>Puntos intermedios</h3>
+			<input id="waypoint-input" class="controls col-xs-12" type="text"
+				placeholder="Introduce un punto intermedio" />
+			<button id="addPunto" class="col-xs-12" disabled="disabled">Añadir
+				punto</button>
+			<ul id="listaPuntos" class="list-group">
+			</ul>
+		</div>
+		<div id="div_mapa"
+			class="col-xs-12 col-sm-9 col-md-9 col-lg-9 panel panel-default pull-right">
 			<div id="mapa"></div>
 		</div>
 		<div id="elevation_chart" class="col-xs-12"></div>

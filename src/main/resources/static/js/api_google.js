@@ -35,8 +35,8 @@ function initMap() {
 	var modes = document.getElementById('mode-selector');
 
 	// Posicion visual en el mapa
-	map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
-	map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
+//	map.controls[google.maps.ControlPosition.TOP_LEFT].push(origin_input);
+//	map.controls[google.maps.ControlPosition.TOP_LEFT].push(destination_input);
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(modes);
 
 	var origin_autocomplete = new google.maps.places.Autocomplete(origin_input);
@@ -234,12 +234,12 @@ function route(origin_place_id, destination_place_id, waypoints_array, travel_mo
  */
 function displayPathElevation(path) {
 	// Display a polyline of the elevation path.
-	polyline = new google.maps.Polyline({
+	/*polyline = new google.maps.Polyline({
 		path : path,
 		strokeColor : '#800800',
 		opacity : 0.2,
 		map : map
-	});
+	});*/
 
 	var elevator = new google.maps.ElevationService;
 
@@ -269,7 +269,7 @@ function plotElevation(elevations, status) {
 		return;
 	}
 	// Create a new chart in the elevation_chart DIV.
-	var chart = new google.visualization.ColumnChart(chartDiv);
+	var chart = new google.visualization.LineChart(chartDiv);
 
 	// Extract the data from which to populate the chart.
 	// Because the samples are equidistant, the 'Sample'
@@ -287,6 +287,7 @@ function plotElevation(elevations, status) {
 		height : 150,
 		legend : 'none',
 		titleY : 'Elevación (m)',
+		titleX : 'Distancia(Km)',
 		colors : [ '#AB0D06' ],
 	});
 }
